@@ -3,8 +3,6 @@ class OrdersController < ApplicationController
   def show
     puts "show in OrdersController"
     @order = Order.find(params[:id])
-    puts @order.inspect
-    # byebug
   end
 
   def create
