@@ -24,11 +24,12 @@ class ApplicationController < ActionController::Base
   end
   helper_method :cart_subtotal_cents
 
-  def get_order_details(order_id)
-    puts "get_order_details"
-    LineItem.where(order_id: order_id).map {|item| { product: Product.find_by(id: item.product_id), quantity: item.quantity} }
-  end
-  helper_method :get_order_details
+  # def get_order_details(order_id)
+  #   puts "get_order_details"
+  #   # LineItem.where(order_id: order_id).map {|item| { product: Product.find_by(id: item.product_id), quantity: item.quantity} }
+  #   LineItem.where(order_id: order_id)
+  # end
+  # helper_method :get_order_details
 
 
   def update_cart(new_cart)
@@ -38,5 +39,11 @@ class ApplicationController < ActionController::Base
       expires: 10.days.from_now
     }
     cookies[:cart]
+  end
+
+  def authenticate
+    authenticate_or_request_with_http_basic do |username, password|
+      username == ENV['ADMIN_USERNAME'] && password == ENV['ADMIN_PASSWORD']
+    end
   end
 end
