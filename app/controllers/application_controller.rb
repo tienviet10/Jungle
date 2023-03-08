@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  
   protect_from_forgery with: :exception
 
   private
@@ -24,13 +23,14 @@ class ApplicationController < ActionController::Base
   end
   helper_method :cart_subtotal_cents
 
-  # def get_order_details(order_id)
-  #   puts "get_order_details"
-  #   # LineItem.where(order_id: order_id).map {|item| { product: Product.find_by(id: item.product_id), quantity: item.quantity} }
-  #   LineItem.where(order_id: order_id)
-  # end
-  # helper_method :get_order_details
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+  helper_method :current_user
 
+  def authorize
+    redirect_to '/login' unless current_user
+  end
 
   def update_cart(new_cart)
     puts "update_cart"
