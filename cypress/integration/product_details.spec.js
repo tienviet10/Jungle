@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 
-describe('Homepage', () => {
+describe('Product Page', () => {
   beforeEach(() => {
     cy.visit('/');
   });
