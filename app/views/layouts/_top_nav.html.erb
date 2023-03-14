@@ -48,7 +48,12 @@
       <ul class="navbar-nav">
 
         <li id="display_email" class="nav-item my-auto me-2">
-          <%= @current_user&.email %>
+          <% if current_user != nil %>
+            <%= link_to "Logout",  "/logout", class: "btn btn-primary" %>
+          <% end %>
+
+          <%#= @current_user&.email %>
+
         </li>
         <li class="nav-item dropdown">
           <a
