@@ -46,15 +46,6 @@
         </li> %>
       </ul>
       <ul class="navbar-nav">
-
-        <li id="display_email" class="nav-item my-auto me-2">
-          <% if current_user != nil %>
-            <%= link_to "Logout",  "/logout", class: "btn btn-primary" %>
-          <% end %>
-
-          <%#= @current_user&.email %>
-
-        </li>
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle text-danger"
@@ -75,6 +66,13 @@
         <li class="nav-item end-0">
           <%= link_to cart_path, class: "nav-link " do %> <%= fa_icon "shopping-cart" %>
           My Cart (<%= cart.size %>) <% end %>
+        </li>
+        <li id="display_logout" class="nav-item my-auto me-2">
+          <% if current_user != nil %>
+            <%= link_to "Logout",  "/logout", class: "btn btn-outline-light" %>
+          <% else %>
+            <%= link_to "Login",  "/login", class: "btn btn-success" %>
+          <% end %>
         </li>
       </ul>
     </div>

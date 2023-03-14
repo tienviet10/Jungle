@@ -32,9 +32,11 @@
               <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation" %>
             </div>
 
-            <div class="form-group mt-4">
+            <div class="form-group mt-4 mb-4">
               <%= f.submit "Register", class: "btn btn-success" %>
             </div>
+
+            <%= link_to "Go To Login",  "/login" %>
           </div>
         </div>
       <% end %>

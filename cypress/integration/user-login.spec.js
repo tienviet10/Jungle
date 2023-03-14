@@ -17,6 +17,6 @@ describe('User Page', () => {
     cy.get('#email').type("vt@gmail.com");
     cy.get('#password').type("123");
     cy.get('[type="submit"]').click();
-    cy.get('#display_email').should('include.text', "vt@gmail.com");
+    cy.get('#display_logout').should('include.text', "vt@gmail.com");
   });
 });
