@@ -1,12 +1,43 @@
-<h1>Signup!</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <%= form_for :user, url: '/users' do |f|  %>
+        <div class="card mt-5">
+          <div class="card-header bg-success text-white">
+            <h3 class="card-title">Signup</h3>
+          </div>
+          <div class="card-body">
+            <div class="form-group mb-2">
+              <%= f.label :first_name %>
+              <%= f.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+            </div>
 
-<%= form_for :user, url: '/users' do |f| %>
+            <div class="form-group mb-2">
+              <%= f.label :last_name %>
+              <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+            </div>
 
-  First Name: <%= f.text_field :first_name %>
-  Last Name: <%= f.text_field :last_name %>
-  Email: <%= f.text_field :email %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
-  <%= f.submit "Submit" %>
+            <div class="form-group mb-2">
+              <%= f.label :email %>
+              <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
+            </div>
 
-<% end %>
+            <div class="form-group mb-2">
+              <%= f.label :password %>
+              <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+            </div>
+
+            <div class="form-group mb-2">
+              <%= f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation" %>
+            </div>
+
+            <div class="form-group mt-4">
+              <%= f.submit "Register", class: "btn btn-success" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
