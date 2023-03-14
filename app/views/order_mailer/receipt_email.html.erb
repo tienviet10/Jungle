@@ -1,0 +1,32 @@
+<p>Dear valued customer,</p>
+
+<p>Thank you for your order. Here are the details of your purchase:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @line_item.each do |item| %>
+      <tr>
+        <td><%= item.product.name %></td>
+        <td><%= item.quantity %></td>
+        <td><%= number_to_currency(item.total_price_cents/100) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2"><strong>Total</strong></td>
+      <td><strong><%= number_to_currency(@order.total_cents/100) %></strong></td>
+    </tr>
+  </tfoot>
+</table>
+
+<hr>
+
+<p>Thank you for shopping with us!</p>

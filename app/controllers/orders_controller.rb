@@ -8,8 +8,13 @@ class OrdersController < ApplicationController
   def create
     charge = perform_stripe_charge
     order  = create_order(charge)
+    @line_item = LineItem.where(order_id: order.id)
 
     if order.valid?
+      puts order.inspect
+      puts "Line of items"
+      puts @line_item.inspect
+      OrderMailer.receipt_email(order, @line_item).deliver_now
       empty_cart!
       redirect_to order, notice: 'Your Order has been placed.'
     else
