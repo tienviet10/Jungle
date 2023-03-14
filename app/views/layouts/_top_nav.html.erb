@@ -46,6 +46,10 @@
         </li> %>
       </ul>
       <ul class="navbar-nav">
+
+        <li id="display_email" class="nav-item my-auto me-2">
+          <%= @current_user&.email %>
+        </li>
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle text-danger"

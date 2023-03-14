@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let!(:user) { User.new(:email => "m@gmail.com", :name => "Mary", :password => "12345", :password_confirmation => "12345") }
+  let!(:user) { User.new(:email => "m@gmail.com", :first_name => "Mary", :last_name => "Ary", :password => "12345", :password_confirmation => "12345") }
 
   describe 'Validations' do
     it 'is not valid without password' do
@@ -22,12 +22,12 @@ RSpec.describe User, type: :model do
 
     it 'confirm password and password_confirmation are not matching' do
       user.save
-      expect(user.name).to eql("Mary")
+      expect(user.first_name).to eql("Mary")
     end
 
     it 'is not valid when email is not unique' do
       user.save
-      user2 = User.new(:email => "M@gmail.com", :name => "Mary", :password => "12345", :password_confirmation => "12345")
+      user2 = User.new(:email => "M@gmail.com", :first_name => "Mary", :password => "12345", :password_confirmation => "12345")
       expect(user2).not_to be_valid
     end
 
@@ -37,10 +37,10 @@ RSpec.describe User, type: :model do
     end
 
     it 'confirm name should be required' do
-      user.name = nil
+      user.first_name = nil
       user.save
       expect(user).not_to be_valid
-      expect(user.errors.full_messages).to include("Name can't be blank")
+      expect(user.errors.full_messages).to include("First name can't be blank")
     end
   end
 

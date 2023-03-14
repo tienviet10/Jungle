@@ -24,6 +24,7 @@ class ApplicationController < ActionController::Base
   helper_method :cart_subtotal_cents
 
   def current_user
+    puts "Hello, Im here"
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   helper_method :current_user
